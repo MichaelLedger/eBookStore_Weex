@@ -1,40 +1,53 @@
 <template>
-  <div class="wrapper">
-    <image :src="logo" class="logo" />
-    <text class="greeting">The environment is ready!</text>
-    <router-view/>
-  </div>
+  <list class="list" @loadmore="loadmore" @scroll="scroll" offset-accuracy=100 show-scrollbar=false>
+    <cell class="cell" v-for="num in lists">
+      <div class="panel">
+        <text class="text">{{num}}</text>
+      </div>
+    </cell>
+  </list>
 </template>
 
 <script>
-export default {
-  name: 'App',
-  data () {
-    return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+  const modal = weex.requireModule('modal');
+  export default {
+    data () {
+      return {
+        lists: ['A', 'B', 'C', 'D', 'E']
+      }
+    },
+    methods: {
+      loadmore() {
+        modal.toast({
+          message: '触发 loadmore 事件'
+        })
+      },
+      scroll(e) {
+        // modal.toast({
+        //   message: JSON.stringify(e.contentSize) + ' ' + JSON.stringify(e.contentOffset)
+        // })
+      }
     }
   }
-}
 </script>
 
 <style scoped>
-  .wrapper {
+  .panel {
+    width: 600px;
+    height: 300px;
+    margin-left: 75px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(162, 217, 192);
+    background-color: rgba(162, 217, 192, 0.2);
   }
-  .logo {
-    width: 424px;
-    height: 200px;
-  }
-  .greeting {
+  .text {
+    font-size: 88px;
     text-align: center;
-    margin-top: 70px;
-    font-size: 50px;
     color: #41B883;
-  }
-  .message {
-    margin: 30px;
-    font-size: 32px;
-    color: #727272;
   }
 </style>

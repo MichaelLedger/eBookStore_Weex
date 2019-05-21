@@ -66,3 +66,7 @@ Enjoy your hacking time!
 ```
 $ cd ebookstore && npm install
 ```
+如果使用 `yarn` 作为安装包管理，可以使用以下命令：
+```
+$ cd ebookstore && yarn install
+```
