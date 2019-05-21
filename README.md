@@ -1,6 +1,8 @@
 # eBookStore_Weex
+
 eBookStore Weex Version
 
+Weex 初始化项目
 ```
 $ weex create ebookstore
 ? Project name ebookstore
@@ -58,4 +60,9 @@ cd ebookstore
 npm start
 
 Enjoy your hacking time!
+```
+
+由于 `.gitignore` 忽略了 `node_modules`，需要手动安装依赖包，执行以下命令，自动将 `package.json` 中的模块安装到 `node_modules` 文件夹下：
+```
+$ cd ebookstore && npm install
 ```
